@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: snapmarkets-bot
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: JUNEAI_API_KEY
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
